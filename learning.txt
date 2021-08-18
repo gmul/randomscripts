@@ -1,0 +1,50 @@
+##### API
+
+Types (all objects, managed objects, data objects, enum types, fault objects)
+Methods
+Properties
+Enumerations
+
+Managed Objects 
+server side object that represents a vsphere object or service
+it contains all the necessary info vsphere needs to work with these entitties
+
+Methods
+methods in managed objects are functions you can invoke on these objects
+
+
+get-view -ViewType Datastore
+MoRef               : Datastore-datastore-11
+Client              : VMware.Vim.VimClientImpl
+
+viobjects have a series of methods or Properties
+$ds | gm
+get-datastore | gm
+gm shows properties and methods for an object
+
+Property
+properties have a type. 
+Extensiondata is a property on most viobjects
+
+
+MoRef
+is a data object that is used as a pointer to a managed object
+
+get moref 
+
+$ds | fl (search for ID)
+PS> $ds | ft -Property Name, Id
+
+#never use hard coded morefs in your script. always retrieve and reuse
+
+
+Name           Id                    
+----           --                    
+vsanDatastore  Datastore-datastore-45
+NAS01_ESX1 (1) Datastore-datastore-12
+NAS01_ESX1     Datastore-datastore-11
+datastore1     Datastore-datastore-10
+
+
+service instances
+get-view serviceinstance | select -exp content

@@ -1,0 +1,21 @@
+$templateName = 'photon-ova
+
+$esxName = '10.192.39.75'
+
+$dsName = 'vsandatastore'
+
+ 
+
+$template = Get-Template -Name $templateName
+
+$ds = Get-Datastore -Name $dsName
+
+$esx = Get-VMHost -Name $esxName
+
+ 
+
+New-VM -Template $template -Name MyVM -VMHost $esx -Datastore $ds -DiskStorageFormat Thin |
+
+Set-VM -NumCpu 2 -MemoryGB 4 -Confirm:$false |
+
+Start-VM -Confirm:$false
